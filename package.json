@@ -1,6 +1,6 @@
 {
   "name": "backup-couchdb-to-s3",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Backup your CouchDB database files to Amazon's S3 service.",
   "keywords": [
     "couch",

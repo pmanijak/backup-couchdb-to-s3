@@ -19,7 +19,11 @@ Then from the prompt:
 
     npm start
 
-This will save your local `database-name.couch` file to your S3 bucket. 
+Or from the command line:
+
+    backup-couchdb-to-s3 --dbUrl http://localhost:5984 --dbName your-database --s3BucketName your-s3-bucket --awsCredentialsPath /path/to/.aws/credentials
+
+This will save your local `database-name.couch` file to your S3 bucket. Put the above command into a `run.sh` file and call it from a cronjob for regular backups.
 
 AWS credentials
 -------
