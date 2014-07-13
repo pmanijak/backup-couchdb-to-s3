@@ -14,19 +14,18 @@ nconf.defaults({
 
 var awsCred = cred(nconf.get('awsCredentialsPath'));
 
-var options = {
-	db: {
-		url: nconf.get('dbUrl'), 
-		name: nconf.get('dbName')
-	},
-	aws: {
-		accessKeyId: awsCred.aws_access_key_id,
-		secretAccessKey: awsCred.aws_secret_access_key,
-		bucket: nconf.get('s3BucketName')
-	}	
+var db = {
+	url: nconf.get('dbUrl'), 
+	name: nconf.get('dbName')
 };
 
-toS3(options, function (err, body) {
+var aws = {
+	accessKeyId: awsCred.aws_access_key_id,
+	secretAccessKey: awsCred.aws_secret_access_key,
+	bucket: nconf.get('s3BucketName')
+};
+
+toS3(db, aws, function (err, body) {
 	if (err) {
 		console.log("FAILURE");
 		console.log(err.message);
