@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 var nconf = require('nconf');
-var toS3 = require('couch-to-s3');
+var toS3  = require('couch-to-s3');
+var cred  = require('./lib/cred.js');
 
 nconf.file('dev', 'config-dev.json').argv().env().file('config.json');
 nconf.defaults({
@@ -11,11 +12,18 @@ nconf.defaults({
 	"awsCredentialsPath": ".aws/credentials"
 });
 
+var awsCred = cred(nconf.get('awsCredentialsPath'));
+
 var options = {
-	dbUrl: nconf.get('dbUrl'),
-	dbName: nconf.get('dbName'),
-	awsCredentialsPath: nconf.get('awsCredentialsPath'),
-	s3BucketName: nconf.get('s3BucketName')
+	db: {
+		url: nconf.get('dbUrl'), 
+		name: nconf.get('dbName')
+	},
+	aws: {
+		accessKeyId: awsCred.aws_access_key_id,
+		secretAccessKey: awsCred.aws_secret_access_key,
+		bucket: nconf.get('s3BucketName')
+	}	
 };
 
 toS3(options, function (err, body) {
