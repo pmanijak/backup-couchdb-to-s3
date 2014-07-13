@@ -19,7 +19,7 @@ Then from the prompt:
 
     npm start
 
-This will save your local `database-name.couch` file to your S3 bucket, as `database-name-backup.couch`. 
+This will save your local `database-name.couch` file to your S3 bucket. 
 
 AWS credentials
 -------
