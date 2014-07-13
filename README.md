@@ -2,7 +2,7 @@ backup-couch-to-s3
 ===========
 Backup your CouchDB database files to Amazon's S3 service.
 
-    npm install backup-couch-to-s3
+    npm install -g backup-couch-to-s3
 
 Usage
 -----------
