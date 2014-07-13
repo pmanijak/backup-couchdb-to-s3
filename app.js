@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var nconf = require('nconf');
-var toS3  = require('couch-to-s3');
+var toS3  = require('couchdb-to-s3');
 var cred  = require('./lib/cred.js');
 
 nconf.file('dev', 'config-dev.json').argv().env().file('config.json');
